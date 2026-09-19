@@ -218,7 +218,6 @@ const tiltToggle = document.getElementById("tilt-toggle");
 tiltToggle.addEventListener("change", () => {
   map.easeTo({
     pitch: tiltToggle.checked ? INITIAL_VIEW.pitch : 0,
-    bearing: tiltToggle.checked ? map.getBearing() : 0,
     duration: 500,
   });
 });
@@ -241,6 +240,21 @@ hillshadeSlider.addEventListener("input", () => {
   const pct = Number(hillshadeSlider.value);
   hillshadeValue.textContent = `${pct}%`;
   safeStyleUpdate(() => map.setPaintProperty("hillshade", "hillshade-exaggeration", pct / 100));
+});
+
+const rotationSlider = document.getElementById("rotation-slider");
+const rotationValue = document.getElementById("rotation-value");
+rotationSlider.addEventListener("input", () => {
+  const bearing = Number(rotationSlider.value);
+  rotationValue.textContent = `${Math.round(bearing)}°`;
+  map.setBearing(bearing);
+});
+// Keep the slider in sync when the map is rotated some other way
+// (compass control drag, two-finger touch rotate, or the reset animation).
+map.on("rotate", () => {
+  const bearing = map.getBearing();
+  rotationSlider.value = bearing;
+  rotationValue.textContent = `${Math.round(bearing)}°`;
 });
 
 document.getElementById("reset-view").addEventListener("click", () => fitToBox(true));
