@@ -1,11 +1,11 @@
 import * as maplibregl from "https://unpkg.com/maplibre-gl@6.10.0/dist/maplibre-gl.mjs";
 
 // ---------------------------------------------------------------------------
-// Kilkenny City centre + a ~10km-radius bounding box around it.
+// Kilkenny City centre + a ~25km-radius bounding box around it.
 // (1 deg lat ~= 111.32km; 1 deg lon ~= 111.32km * cos(lat) at this latitude)
 // ---------------------------------------------------------------------------
 const CENTER = { lng: -7.2448, lat: 52.6542 };
-const RADIUS_KM = 10;
+const RADIUS_KM = 25;
 
 const latDelta = RADIUS_KM / 111.32;
 const lonDelta = RADIUS_KM / (111.32 * Math.cos((CENTER.lat * Math.PI) / 180));
@@ -19,7 +19,7 @@ const BBOX = {
 
 // A little slack on the pan limit so the box edges aren't glued to the
 // viewport, while the visible rectangle on the map still marks the true
-// 10km box requested.
+// 25km box requested.
 const PAN_PAD = 0.3;
 const MAX_BOUNDS = [
   [BBOX.west - lonDelta * PAN_PAD, BBOX.south - latDelta * PAN_PAD],

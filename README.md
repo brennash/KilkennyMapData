@@ -1,6 +1,6 @@
 # Kilkenny DEM Viewer
 
-An interactive digital elevation model (DEM) viewer for a 10km-radius area
+An interactive digital elevation model (DEM) viewer for a 25km-radius area
 around Kilkenny City, Ireland. Built with [MapLibre GL JS](https://maplibre.org/),
 hosted as a static site on GitHub Pages.
 
@@ -12,7 +12,7 @@ hosted as a static site on GitHub Pages.
 - Hillshade relief shading with adjustable intensity
 - Switchable basemaps: OpenStreetMap streets, OpenTopoMap, or hillshade-only
 - Click/hover elevation readout (via `queryTerrainElevation`)
-- Map is bounded to a ~10km radius around Kilkenny City centre
+- Map is bounded to a ~25km radius around Kilkenny City centre
   (52.6542° N, -7.2448° W)
 
 ## Data sources
